@@ -1,0 +1,982 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>QR</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&family=Poppins:wght@300;400;500;600;700&display=swap');
+  
+  :root {
+    --primary: #0670af;
+    --primary-light: #4194c3;
+    --secondary: #003865;
+    --accent: #012a4a;
+    --background: #f7f9fa;
+    --card-bg: #ffffff;
+    --text-dark: #1e293b;
+    --text-light: #64748b;
+    --shadow-sm: 0 1px 2px rgba(0,0,0,0.05);
+    --shadow-md: 0 4px 6px rgba(0,0,0,0.1);
+    --shadow-lg: 0 10px 15px rgba(0,0,0,0.1);
+    --radius-sm: 4px;
+    --radius-md: 8px;
+    --radius-lg: 12px;
+    --transition: 0.3s ease;
+  }
+
+  body {
+    font-family: 'Poppins', sans-serif;
+    background: var(--background);
+    margin: 0;
+    padding: 0;
+    color: var(--text-dark);
+  }
+
+  .container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 20px;
+  }
+
+  .header {
+    text-align: center;
+    padding: 10px 0;
+    background: linear-gradient(135deg, #0670af 0%, #00196F 100%);
+    margin-bottom: 40px;
+    box-shadow: var(--shadow-lg);
+    position: relative;
+    overflow: hidden;
+    width: 100vw;
+    left: 50%;
+    right: 50%;
+    margin-left: -50vw;
+    margin-right: -50vw;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .header-content {
+    width: 100%;
+    max-width: 1200px;
+    position: relative;
+  }
+
+  .company-logo {
+    position: absolute;
+    top: 10px;
+    left: 20px;
+    width: 180px;
+    height: auto;
+    z-index: 2;
+    filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.2));
+  }
+
+  .svg-title {
+    width: 120px;
+    height: auto;
+    display: block;
+    margin: 10px auto 5px;
+    filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.2));
+    transition: var(--transition);
+  }
+
+  .svg-title:hover {
+    filter: drop-shadow(0 4px 6px rgba(0, 0, 0, 0.3));
+    transform: translateY(-3px);
+  }
+
+  .subtitle {
+    color: rgba(255, 255, 255, 0.8);
+    font-weight: 300;
+    margin-top: 0;
+    padding-bottom: 10px;
+    position: relative;
+    z-index: 1;
+  }
+
+  .filiere-selector {
+    margin-top: -30px;
+    display: grid;
+    grid-template-columns: repeat(6, auto);
+    justify-content: center;
+    gap: 15px;
+  }
+
+  .filiere-selector button {
+    border: none;
+    background: none;
+    cursor: pointer;
+    padding: 0;
+    transition: var(--transition);
+  }
+
+  .filiere-selector button:hover:not(.disabled) {
+    transform: translateY(-8px);
+  }
+
+  .filiere-selector button.disabled {
+    opacity: 0.4;
+    cursor: not-allowed;
+    pointer-events: none;
+    filter: grayscale(70%);
+    transform: none !important;
+  }
+
+  .filiere-selector button.active img {
+    border: 4px solid var(--primary);
+    transform: scale(1.05);
+  }
+
+  .filiere-selector img {
+    width: 80px;
+    border-radius: var(--radius-md);
+    box-shadow: var(--shadow-lg);
+    transition: var(--transition);
+  }
+
+  .transverse-wrapper {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin-left: 20px;
+  }
+
+  .transverse-box {
+    writing-mode: vertical-rl;
+    text-orientation: upright;
+    background-color: #00196F;
+    color: #eff1f3;
+    font-weight: bold;
+    padding: 15px;
+    border-radius: var(--radius-md);
+    box-shadow: var(--shadow-md);
+    height: 200px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transform: translateY(-15px);
+    cursor: pointer;
+    transition: var(--transition);
+    position: relative;
+  }
+
+  .transverse-box:hover {
+    transform: translateY(-23px);
+    box-shadow: var(--shadow-lg);
+  }
+
+  .transverse-box.active {
+    border: 4px solid var(--primary);
+    transform: translateY(-15px) scale(1.05);
+  }
+
+  .search-section {
+    max-width: 900px;
+    margin: 0 auto 40px;
+    background: var(--card-bg);
+    padding: 25px;
+    border-radius: var(--radius-lg);
+    box-shadow: var(--shadow-md);
+    border: 1px solid rgba(0,0,0,0.05);
+    position: relative;
+    z-index: 1;
+  }
+
+  .search-top {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
+    gap: 20px;
+    margin-bottom: 20px;
+  }
+
+  .search-top > div {
+    flex: 1;
+  }
+
+  .search-top label, .filter-container label {
+    display: block;
+    margin-bottom: 8px;
+    font-weight: 500;
+    color: var(--primary);
+    font-size: 0.9rem;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+  }
+
+  .search-top input,
+  .search-top select,
+  .filter-container select {
+    width: 100%;
+    padding: 12px;
+    border: 1px solid #e2e8f0;
+    border-radius: var(--radius-sm);
+    font-size: 1rem;
+    font-family: 'Poppins', sans-serif;
+    background-color: #f8fafc;
+    transition: var(--transition);
+    box-shadow: var(--shadow-sm);
+  }
+
+  .search-top input:focus,
+  .search-top select:focus,
+  .filter-container select:focus {
+    outline: none;
+    border-color: var(--primary-light);
+    box-shadow: 0 0 0 3px rgba(99, 102, 241, 0.2);
+  }
+
+  #reset-filters {
+    background: none;
+    border: none;
+    font-size: 1.8rem;
+    color: #ef4444;
+    cursor: pointer;
+    flex: 0 0 auto;
+    transition: all 0.2s ease;
+    height: 48px;
+    width: 48px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+  }
+
+  #reset-filters:hover {
+    background-color: #fee2e2;
+    transform: rotate(90deg);
+  }
+
+  .filter-container {
+    margin-top: 15px;
+    padding-top: 15px;
+    border-top: 1px dashed #e2e8f0;
+    animation: fadeIn var(--transition);
+  }
+
+  @keyframes fadeIn {
+    from { opacity: 0; transform: translateY(-10px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+
+  #faq-list {
+    max-width: 900px;
+    margin: 0 auto;
+  }
+
+  .faq-item {
+    background: var(--card-bg);
+    border-radius: var(--radius-md);
+    margin-bottom: 20px;
+    box-shadow: var(--shadow-md);
+    overflow: hidden;
+    border: 1px solid rgba(0,0,0,0.05);
+    transition: var(--transition);
+  }
+
+  .faq-item:hover {
+    box-shadow: var(--shadow-lg);
+    transform: translateY(-2px);
+  }
+
+  .faq-question {
+    width: 100%;
+    padding: 20px;
+    background: linear-gradient(to right, #f8fafc, #f1f5f9);
+    border: none;
+    text-align: left;
+    font-weight: 600;
+    font-size: 1.05rem;
+    cursor: pointer;
+    position: relative;
+    color: var(--text-dark);
+    transition: var(--transition);
+    display: flex;
+    align-items: center;
+    border-left: 4px solid transparent;
+  }
+
+  .faq-question:hover {
+    background: linear-gradient(to right, #f1f5f9, #e2e8f0);
+    border-left: 4px solid var(--primary-light);
+  }
+
+  .faq-question.active {
+    background: linear-gradient(to right, #eef7fd, #e5f1f9);
+    border-left: 4px solid var(--primary);
+  }
+
+  .faq-question-text {
+    flex-grow: 1;
+    margin-right: 50px;
+    padding-right: 15px;
+  }
+
+  .question-number {
+    font-weight: 700;
+    color: var(--primary);
+    margin-right: 8px;
+  }
+
+  .icon-container {
+    position: absolute;
+    right: 0;
+    top: 0;
+    bottom: 0;
+    width: 60px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-left: 1px solid rgba(0, 0, 0, 0.1);
+    background: #00196F;
+  }
+
+  .question-icon {
+    width: 70px;
+    height: 60px;
+    transition: var(--transition);
+  }
+
+  .faq-question.active .icon-container {
+    background: rgba(6, 112, 175, 0.05);
+  }
+
+  .faq-question.active .question-icon {
+    transform: rotate(180deg);
+  }
+
+  .faq-answer {
+    display: none;
+    padding: 20px;
+    border-top: 1px solid #e2e8f0;
+    animation: slideDown var(--transition);
+  }
+
+  @keyframes slideDown {
+    from { opacity: 0; transform: translateY(-20px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+
+  .checkbox-group {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    margin-bottom: 20px;
+    padding: 10px;
+    background-color: #f8fafc;
+    border-radius: var(--radius-sm);
+  }
+
+  .checkbox-group label {
+    display: flex;
+    align-items: center;
+    gap: 5px;
+    padding: 8px 12px;
+    background-color: white;
+    border-radius: var(--radius-sm);
+    font-weight: 500;
+    color: var(--text-dark);
+    border: 1px solid #e2e8f0;
+    cursor: pointer;
+    transition: all 0.2s ease;
+  }
+
+  .checkbox-group label:hover {
+    background-color: #f1f5f9;
+  }
+
+  .checkbox-group input[type="radio"] {
+    margin: 0;
+  }
+
+  .checkbox-group input[type="radio"]:checked + span {
+    color: var(--primary);
+    font-weight: 600;
+  }
+
+  .answer-text {
+    padding: 15px;
+    background: #f8fafc;
+    border-left: 4px solid var(--primary);
+    white-space: pre-wrap;
+    font-size: 1rem;
+    line-height: 1.6;
+    margin-bottom: 15px;
+    border-radius: var(--radius-sm);
+  }
+
+  .no-results {
+    text-align: center;
+    padding: 40px 20px;
+    background: var(--card-bg);
+    border-radius: var(--radius-md);
+    box-shadow: var(--shadow-md);
+    margin-top: 30px;
+    color: var(--text-light);
+    font-size: 1.1rem;
+    border: 1px dashed #cbd5e1;
+  }
+
+  .question-metadata {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    margin-top: 15px;
+    font-size: 0.75rem;
+    line-height: 1.2;
+  }
+
+  .metadata-theme {
+    background: linear-gradient(to right, #0670af, #4194c3);
+    color: white;
+    padding: 5px 12px;
+    border-radius: 30px;
+    box-shadow: 0 2px 4px rgba(6, 112, 175, 0.2);
+    font-weight: 500;
+    font-size: 0.85rem;
+    letter-spacing: 0.5px;
+  }
+
+  .metadata-sous-theme {
+    background: linear-gradient(to right, #003865, #0670af);
+    color: white;
+    padding: 4px 10px;
+    border-radius: 30px;
+    box-shadow: 0 2px 4px rgba(0, 56, 101, 0.2);
+    font-weight: 500;
+    font-size: 0.78rem;
+    letter-spacing: 0.3px;
+  }
+
+  .metadata-sous-sous-theme {
+    background: linear-gradient(to right, #012a4a, #003865);
+    color: white;
+    padding: 3px 10px;
+    border-radius: 30px;
+    box-shadow: 0 2px 4px rgba(1, 42, 74, 0.2);
+    font-weight: 500;
+    font-size: 0.72rem;
+  }
+
+  .metadata-theme, .metadata-sous-theme, .metadata-sous-sous-theme {
+    transition: var(--transition);
+  }
+
+  .metadata-theme:hover, .metadata-sous-theme:hover, .metadata-sous-sous-theme:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.15);
+  }
+
+  @media (max-width: 768px) {
+    .search-top {
+      flex-direction: column;
+      align-items: stretch;
+    }
+    .svg-title {
+      width: 150px;
+    }
+    .filiere-selector {
+      grid-template-columns: repeat(3, auto);
+    }
+    .filiere-selector img {
+      width: 60px;
+    }
+  }
+</style>
+</head>
+<body>
+<div class="header">
+  <div class="header-content">
+    <img class="company-logo" src="logos/logo_EDF.svg" alt="Logo Entreprise" />
+    <img class="svg-title" src="logos/TITLE.png" alt="QR Logo" />
+    <p class="subtitle">Base de connaissances interactive</p>
+  </div>
+</div>
+<div class="container">
+  <div style="display: flex; justify-content: center;">
+    <div class="filiere-selector">
+      <button onclick="selectFiliere('biogaz')"><img src="logos/Biogaz.svg" alt="Biogaz" /></button>
+      <button onclick="selectFiliere('biomasse')"><img src="logos/Biomasse.svg" alt="Biomasse" /></button>
+      <button onclick="selectFiliere('Cogénération')"><img src="logos/Cogénération.svg" alt="Cogénération" /></button>
+      <button onclick="selectFiliere('Hydraulique')"><img src="logos/Hydraulique.svg" alt="Hydraulique" /></button>
+      <button onclick="selectFiliere('Géothermie')"><img src="logos/Géothermie.svg" alt="Géothermie" /></button>
+      <button onclick="selectFiliere('Incineration')"><img src="logos/Incineration.svg" alt="Incineration" /></button>
+      <button onclick="selectFiliere('Solaire')"><img src="logos/Solaire.svg" alt="Solaire" /></button>
+      <button onclick="selectFiliere('Éolien terrestre')"><img src="logos/Éolien terrestre.svg" alt="Éolien terrestre" /></button>
+      <button onclick="selectFiliere('Éolien en mere')"><img src="logos/Éolien en mer.svg" alt="Éolien en mer" /></button>
+      <button onclick="selectFiliere('Autoconso')"><img src="logos/Autoconso.svg" alt="Autoconso" /></button>
+      <button onclick="selectFiliere('CCG')"><img src="logos/CCG.svg" alt="CCG" /></button>
+      <button onclick="selectFiliere('Gaz de mine')"><img src="logos/Gazdemine.svg" alt="Gaz de mine" /></button>
+    </div>
+    <div class="transverse-wrapper">
+      <div class="transverse-box" onclick="selectFiliere('transverse')">TRANSVERSE</div>
+    </div>
+  </div>
+  <div class="search-section">
+    <div class="search-top">
+      <div>
+        <label for="search-keyword">MOTS-CLÉS</label>
+        <input type="text" id="search-keyword" placeholder="Rechercher..." />
+      </div>
+      <div>
+        <label for="search-theme">THÈME</label>
+        <select id="search-theme"><option value="">Tous les thèmes</option></select>
+      </div>
+      <button id="reset-filters" title="Réinitialiser les filtres">✖</button>
+    </div>
+    <div id="sous-theme-container" class="filter-container" style="display:none;">
+      <label for="search-sous-theme">SOUS-THÈME</label>
+      <select id="search-sous-theme"><option value="">Tous les sous-thèmes</option></select>
+    </div>
+    <div id="sous-sous-theme-container" class="filter-container" style="display:none;">
+      <label for="search-sous-sous-theme">SOUS-SOUS-THÈME</label>
+      <select id="search-sous-sous-theme"><option value="">Tous les sous-sous-thèmes</option></select>
+    </div>
+  </div>
+  <div id="faq-list"></div>
+</div>
+
+<script>
+  const filieresAvecBase = {
+    'biogaz': 'biogaz_1.json',
+    'biomasse': 'biomasse_1.json',
+    'Solaire': 'solaire_1.json'
+  };
+
+  let faqData = [];
+  let currentFiliere = 'biogaz';
+  let filteredData = [];
+
+  // Fonction utilitaire de debounce pour optimiser les recherches
+  function debounce(func, wait) {
+    let timeout;
+    return function executedFunction(...args) {
+      const later = () => {
+        clearTimeout(timeout);
+        func(...args);
+      };
+      clearTimeout(timeout);
+      timeout = setTimeout(later, wait);
+    };
+  }
+
+  // FONCTION ADAPTÉE : Extraction des types de contrat basée sur les colonnes après "Question"
+  function extractContractTypes(data) {
+    if (data.length === 0) return [];
+    
+    const firstItem = data[0];
+    const allKeys = Object.keys(firstItem);
+    
+    // Trouve l'index de la colonne "Question"
+    const questionIndex = allKeys.findIndex(key => 
+      key.toLowerCase().includes('question') || key === 'Question'
+    );
+    
+    if (questionIndex === -1) {
+      console.warn('Colonne "Question" non trouvée');
+      return [];
+    }
+    
+    // Extrait toutes les colonnes qui suivent "Question"
+    const contractTypes = [];
+    for (let i = questionIndex + 1; i < allKeys.length; i++) {
+      const key = allKeys[i].trim();
+      // Ignore les colonnes vides et les colonnes de métadonnées connues
+      if (key && 
+          !key.toLowerCase().includes('thème') && 
+          !key.toLowerCase().includes('theme') && 
+          !key.toLowerCase().includes('mot') &&
+          key !== '') {
+        contractTypes.push(key);
+      }
+    }
+    
+    return contractTypes;
+  }
+
+  // FONCTION ADAPTÉE : Transformation des données vers l'ancien format
+  function transformDataStructure(rawData) {
+    if (rawData.length === 0) return [];
+    
+    // Extrait les types de contrat une seule fois
+    const contractTypes = extractContractTypes(rawData);
+    
+    return rawData.map(item => {
+      // Récupération des champs principaux avec les nouveaux noms
+      const question = item['Question'] || item['question'] || '';
+      const theme = item['Thème'] || item['Theme'] || '';
+      const sousTheme = item['Sous thème'] || item['SousTheme'] || '';
+      const sousSousTheme = item['Sous sous thème'] || item['SousSousTheme'] || '';
+      const motsClés = item['MotsClés'] || '';
+      
+      // Construction de l'objet réponses basé sur les types de contrat extraits
+      const reponses = {};
+      contractTypes.forEach(contractType => {
+        // Cherche la réponse dans les différentes variantes possibles de la clé
+        const value = item[contractType] || 
+                     item[` ${contractType}`] || 
+                     item[contractType.trim()] || 
+                     '';
+        reponses[contractType.trim()] = value;
+      });
+      
+      return {
+        question: question,
+        Theme: theme,
+        SousTheme: sousTheme,
+        SousSousTheme: sousSousTheme,
+        MotsClés: motsClés,
+        reponses: reponses
+      };
+    });
+  }
+
+  function loadFiliereData(filiere) {
+    const filename = filieresAvecBase[filiere];
+    
+    if (filename) {
+      fetch(filename)
+        .then(r => r.json())
+        .then(rawData => {
+          // ADAPTATION : Transformation des données
+          faqData = transformDataStructure(rawData);
+          filteredData = [...faqData];
+          const keyword = document.getElementById('search-keyword').value;
+          initFilterOptions(keyword);
+          renderFAQ(faqData);
+        })
+        .catch(error => {
+          console.error('Erreur lors du chargement des données:', error);
+          document.getElementById('faq-list').innerHTML =
+            '<div style="text-align:center; padding:20px; color:red;">Erreur lors du chargement des données.</div>';
+        });
+    } else {
+      faqData = [];
+      filteredData = [];
+      document.getElementById('faq-list').innerHTML =
+        '<div style="text-align:center; padding:20px;">Aucune FAQ disponible pour cette filière.</div>';
+      resetFilters();
+    }
+  }
+
+  function selectFiliere(name) {
+    currentFiliere = name;
+    
+    // Mise à jour des boutons de filière
+    document.querySelectorAll('.filiere-selector button').forEach(btn => {
+      btn.classList.remove('active', 'disabled');
+      btn.removeAttribute('title');
+    });
+    document.querySelector('.transverse-box').classList.remove('active');
+    
+    const selectedButton = Array.from(document.querySelectorAll('.filiere-selector button')).find(btn =>
+      btn.getAttribute('onclick').includes(`'${name}'`)
+    );
+    
+    if (selectedButton) {
+      if (filieresAvecBase[name]) {
+        selectedButton.classList.add('active');
+      } else {
+        selectedButton.classList.add('disabled');
+        selectedButton.setAttribute('title', 'Pas de FAQ disponible pour cette filière');
+      }
+    }
+    
+    if (name === 'transverse') {
+      document.querySelector('.transverse-box').classList.add('active');
+    }
+    
+    resetFilters();
+    loadFiliereData(name);
+  }
+
+  function resetFilters() {
+    document.getElementById('search-keyword').value = '';
+    document.getElementById('search-theme').value = '';
+    document.getElementById('search-sous-theme').value = '';
+    document.getElementById('search-sous-sous-theme').value = '';
+    document.getElementById('sous-theme-container').style.display = 'none';
+    document.getElementById('sous-sous-theme-container').style.display = 'none';
+    
+    if (faqData.length > 0) {
+      initFilterOptions();
+      renderFAQ(faqData);
+    }
+  }
+
+  function initFilterOptions(keyword = '') {
+    updateThemeOptions(keyword);
+    document.getElementById('search-sous-theme').innerHTML = '<option value="">Tous les sous-thèmes</option>';
+    document.getElementById('search-sous-sous-theme').innerHTML = '<option value="">Tous les sous-sous-thèmes</option>';
+    document.getElementById('sous-theme-container').style.display = 'none';
+    document.getElementById('sous-sous-theme-container').style.display = 'none';
+  }
+
+  function updateThemeOptions(keyword = '') {
+    const themeSelect = document.getElementById('search-theme');
+    themeSelect.innerHTML = '<option value="">Tous les thèmes</option>';
+    let filteredForTheme = faqData;
+    
+    if (keyword) {
+      filteredForTheme = filteredForTheme.filter(q =>
+        (q.question && q.question.toLowerCase().includes(keyword.toLowerCase())) ||
+        (q.MotsClés && q.MotsClés.toLowerCase().includes(keyword.toLowerCase()))
+      );
+    }
+    
+    const themes = [...new Set(filteredForTheme.map(q => q.Theme).filter(t => t))];
+    themes.sort().forEach(theme => {
+      const option = document.createElement('option');
+      option.value = theme;
+      option.textContent = theme;
+      themeSelect.appendChild(option);
+    });
+  }
+
+  function updateSousThemeOptions(theme, keyword = '') {
+    const sousThemeContainer = document.getElementById('sous-theme-container');
+    const sousThemeSelect = document.getElementById('search-sous-theme');
+    sousThemeSelect.innerHTML = '<option value="">Tous les sous-thèmes</option>';
+    
+    if (!theme) {
+      sousThemeContainer.style.display = 'none';
+      document.getElementById('sous-sous-theme-container').style.display = 'none';
+      return;
+    }
+    
+    let filteredForSousTheme = faqData.filter(q => q.Theme === theme);
+    if (keyword) {
+      filteredForSousTheme = filteredForSousTheme.filter(q =>
+        (q.question && q.question.toLowerCase().includes(keyword.toLowerCase())) ||
+        (q.MotsClés && q.MotsClés.toLowerCase().includes(keyword.toLowerCase()))
+      );
+    }
+    
+    const sousThemes = [...new Set(filteredForSousTheme.map(q => q.SousTheme).filter(st => st))];
+    sousThemes.sort().forEach(sousTheme => {
+      const option = document.createElement('option');
+      option.value = sousTheme;
+      option.textContent = sousTheme;
+      sousThemeSelect.appendChild(option);
+    });
+    
+    sousThemeContainer.style.display = sousThemes.length > 0 ? 'block' : 'none';
+    updateSousSousThemeOptions(theme, '', keyword);
+  }
+
+  function updateSousSousThemeOptions(theme, sousTheme, keyword = '') {
+    const sousSousThemeContainer = document.getElementById('sous-sous-theme-container');
+    const sousSousThemeSelect = document.getElementById('search-sous-sous-theme');
+    sousSousThemeSelect.innerHTML = '<option value="">Tous les sous-sous-thèmes</option>';
+    
+    if (!sousTheme) {
+      sousSousThemeContainer.style.display = 'none';
+      return;
+    }
+    
+    let filteredForSousSousTheme = faqData.filter(q => q.Theme === theme && q.SousTheme === sousTheme);
+    if (keyword) {
+      filteredForSousSousTheme = filteredForSousSousTheme.filter(q =>
+        (q.question && q.question.toLowerCase().includes(keyword.toLowerCase())) ||
+        (q.MotsClés && q.MotsClés.toLowerCase().includes(keyword.toLowerCase()))
+      );
+    }
+    
+    const sousSousThemes = [...new Set(filteredForSousSousTheme.map(q => q.SousSousTheme).filter(sst => sst))];
+    sousSousThemes.sort().forEach(sousSousTheme => {
+      const option = document.createElement('option');
+      option.value = sousSousTheme;
+      option.textContent = sousSousTheme;
+      sousSousThemeSelect.appendChild(option);
+    });
+    
+    sousSousThemeContainer.style.display = sousSousThemes.length > 0 ? 'block' : 'none';
+  }
+
+  function renderFAQ(list) {
+    const container = document.getElementById('faq-list');
+    container.innerHTML = '';
+    
+    if (list.length === 0) {
+      container.innerHTML = '<div class="no-results">Aucun résultat ne correspond à votre recherche.</div>';
+      return;
+    }
+    
+    // ADAPTATION : Extraction dynamique des types de contrat depuis les données transformées
+    const contractTypes = faqData.length > 0 ? extractContractTypes([faqData[0]]) : [];
+    
+    // Alternative : extraction depuis les clés de l'objet reponses
+    const contractTypesFromReponses = faqData.length > 0 ? 
+      Object.keys(faqData[0].reponses || {}) : [];
+    
+    // Utilise les types de contrat extraits des réponses si disponibles
+    const finalContractTypes = contractTypesFromReponses.length > 0 ? 
+      contractTypesFromReponses : contractTypes;
+
+    list.forEach((item) => {
+      const originalIndex = faqData.findIndex(q => q.question === item.question);
+      const block = document.createElement('div');
+      block.className = 'faq-item';
+
+      const qBtn = document.createElement('button');
+      qBtn.className = 'faq-question';
+
+      const questionNumber = document.createElement('span');
+      questionNumber.className = 'question-number';
+      questionNumber.textContent = `Q${originalIndex + 1}:`;
+
+      const questionText = document.createElement('span');
+      questionText.className = 'faq-question-text';
+      questionText.textContent = item.question;
+
+      const iconContainer = document.createElement('div');
+      iconContainer.className = 'icon-container';
+
+      const questionIcon = document.createElement('img');
+      questionIcon.className = 'question-icon';
+      questionIcon.src = 'logos/R.svg';
+      questionIcon.alt = 'Afficher la réponse';
+
+      iconContainer.appendChild(questionIcon);
+      qBtn.appendChild(questionNumber);
+      qBtn.appendChild(questionText);
+      qBtn.appendChild(iconContainer);
+
+      const ans = document.createElement('div');
+      ans.className = 'faq-answer';
+
+      const grp = document.createElement('div');
+      grp.className = 'checkbox-group';
+      finalContractTypes.forEach(type => {
+        const lbl = document.createElement('label');
+        const inp = document.createElement('input');
+        inp.type = 'radio';
+        inp.name = `contract-${originalIndex}`;
+        inp.value = type;
+
+        const span = document.createElement('span');
+        span.textContent = type;
+
+        inp.onchange = () => {
+          txt.textContent = item.reponses[type] || 'Aucune réponse pour ce contrat.';
+        };
+
+        lbl.appendChild(inp);
+        lbl.appendChild(span);
+        grp.appendChild(lbl);
+      });
+
+      const txt = document.createElement('div');
+      txt.className = 'answer-text';
+
+      const metadataDiv = document.createElement('div');
+      metadataDiv.className = 'question-metadata';
+
+      if (item.Theme) {
+        const themeSpan = document.createElement('span');
+        themeSpan.className = 'metadata-theme';
+        themeSpan.textContent = item.Theme;
+        metadataDiv.appendChild(themeSpan);
+      }
+      if (item.SousTheme) {
+        const sousThemeSpan = document.createElement('span');
+        sousThemeSpan.className = 'metadata-sous-theme';
+        sousThemeSpan.textContent = item.SousTheme;
+        metadataDiv.appendChild(sousThemeSpan);
+      }
+      if (item.SousSousTheme) {
+        const sousSousThemeSpan = document.createElement('span');
+        sousSousThemeSpan.className = 'metadata-sous-sous-theme';
+        sousSousThemeSpan.textContent = item.SousSousTheme;
+        metadataDiv.appendChild(sousSousThemeSpan);
+      }
+
+      ans.appendChild(grp);
+      ans.appendChild(txt);
+      ans.appendChild(metadataDiv);
+
+      qBtn.onclick = () => {
+        ans.style.display = ans.style.display === 'block' ? 'none' : 'block';
+        if (ans.style.display === 'block') {
+          qBtn.classList.add('active');
+        } else {
+          qBtn.classList.remove('active');
+        }
+        if (ans.style.display === 'block' && !ans.querySelector('input:checked')) {
+          for (const type of finalContractTypes) {
+            if (item.reponses[type]) {
+              const radio = ans.querySelector(`input[value="${type}"]`);
+              if (radio) {
+                radio.checked = true;
+                txt.textContent = item.reponses[type];
+                break;
+              }
+            }
+          }
+        }
+      };
+
+      block.appendChild(qBtn);
+      block.appendChild(ans);
+      container.appendChild(block);
+    });
+  }
+
+  function applyFilters() {
+    const keyword = document.getElementById('search-keyword').value.toLowerCase();
+    const theme = document.getElementById('search-theme').value;
+    const sousTheme = document.getElementById('search-sous-theme').value;
+    const sousSousTheme = document.getElementById('search-sous-sous-theme').value;
+
+    filteredData = faqData.filter(q => {
+      const matchKeyword = !keyword ||
+        (q.question && q.question.toLowerCase().includes(keyword)) ||
+        (q.MotsClés && q.MotsClés.toLowerCase().includes(keyword));
+      const matchTheme = !theme || q.Theme === theme;
+      const matchSousTheme = !sousTheme || q.SousTheme === sousTheme;
+      const matchSousSousTheme = !sousSousTheme || q.SousSousTheme === sousSousTheme;
+      return matchKeyword && matchTheme && matchSousTheme && matchSousSousTheme;
+    });
+
+    renderFAQ(filteredData);
+  }
+
+  // Version optimisée avec debounce pour la recherche par mot-clé
+  const debouncedKeywordSearch = debounce(function() {
+    const keyword = document.getElementById('search-keyword').value;
+    updateThemeOptions(keyword);
+    const theme = document.getElementById('search-theme').value;
+    if (theme) {
+      updateSousThemeOptions(theme, keyword);
+      const sousTheme = document.getElementById('search-sous-theme').value;
+      if (sousTheme) {
+        updateSousSousThemeOptions(theme, sousTheme, keyword);
+      }
+    }
+    applyFilters();
+  }, 300);
+
+  document.addEventListener('DOMContentLoaded', () => {
+    selectFiliere('biogaz');
+    
+    document.getElementById('reset-filters').addEventListener('click', resetFilters);
+    document.getElementById('search-keyword').addEventListener('input', debouncedKeywordSearch);
+    document.getElementById('search-theme').addEventListener('change', function () {
+      const keyword = document.getElementById('search-keyword').value;
+      updateSousThemeOptions(this.value, keyword);
+      applyFilters();
+    });
+    document.getElementById('search-sous-theme').addEventListener('change', function () {
+      const theme = document.getElementById('search-theme').value;
+      const keyword = document.getElementById('search-keyword').value;
+      updateSousSousThemeOptions(theme, this.value, keyword);
+      applyFilters();
+    });
+    document.getElementById('search-sous-sous-theme').addEventListener('change', applyFilters);
+  });
+</script>
+</body>
+</html>

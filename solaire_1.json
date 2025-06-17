@@ -1,0 +1,186 @@
+[
+    {
+        "N° ": 3,
+        "Thème": "Créer les contrats",
+        "Sous thème": "Contrôle de l'installation",
+        "Sous sous thème": "Documents contractuels",
+        "Question": "Comment vérifier que les panneaux sont sous garantie ? ",
+        " S21V7": "EDF OA ne réalise pas de contrôles supplémentaires sur ces nouvelles conditions d’éligibilité. Le respect des critères sera de la responsabilité des installateurs ou des Bureaux de contrôle.    "
+    },
+    {
+        "N° ": 4,
+        "Thème": "Créer les contrats",
+        "Sous thème": "Conditions d'éligibilité au contrat",
+        "Sous sous thème": "Documents contractuels",
+        "Question": "Est-ce que EDF OA va contrôler l'éligibilité d'une demande vis-à-vis de la donnée de résilience des modules et des cellules photovoltaiques (à partir de janvier 2026) ? ",
+        " S21V7": "EDF OA ne réalisera pas de contrôles supplémentaires sur ces nouvelles conditions d’éligibilité. Le respect des critères sera de la responsabilité des installateurs ou des Bureaux de contrôle.        "
+    },
+    {
+        "N° ": 5,
+        "Thème": "Créer les contrats",
+        "Sous thème": "Rémunération",
+        "Sous sous thème": "Clarification l'arrêté / CDC / Contrat",
+        "Question": "Concernant le projet d'appel d'offre simplifié, quelles sont les raisons qui conduisent la DGEC à retenir le mécanisme de complément de rémunénration pour le segment de puissance ]100 ;500 kWc] ?",
+        " S21V7": "L’article 5 du règlement de l’UE 2019/943 sur le marché intérieur de l’électricité prévoit un abaissement du seuil OA au plus tard au 01/01/2026 pour les installations de production utilisant des sources d'énergie renouvelables d’une puissance électrique installée à 200kW (dérogation à la responsabilité en matière d'équilibrage).  \nLa déclinaison dans le droit français se fera par un décret, qui devrait modifier l’article D. 314-15 du code de l’énergie déterminant les installations pouvant bénéficier de l’obligation d’achat en guichet ouvert :  Un seuil à 100 kWc pour le solaire sur bâtiment, hangar ou ombrière est la cible\nL’objectif d’abaissement du seuil OA/CR permet au gouvernement de mieux contrôler le volume des projets déposés et autorisés."
+    },
+    {
+        "N° ": 6,
+        "Thème": "Créer les contrats",
+        "Sous thème": "Conditions d'éligibilité au contrat",
+        "Sous sous thème": "Clarification l'arrêté / CDC / Contrat",
+        "Question": "Dans l'attente de la sortie de l'appel d'offre simplifié, doit-on considérer que l'ensemble des dispositions décrites dans le S21V7 sont transitoires pour les sup 100 kWc ?",
+        " S21V7": "Oui, à partir de la publication de l’arrêté relatif à l’appel d’offre simplifié, le cadre de soutien des installations sup 100 KWc va évoluer."
+    },
+    {
+        "N° ": 7,
+        "Thème": "Créer les contrats",
+        "Sous thème": "Demande de contrat",
+        "Sous sous thème": "Clarification l'arrêté / CDC / Contrat",
+        "Question": "Que savons nous déjà du projet d'appel d'offre simplifié sur le segment ]100; 500 kWc] ?",
+        " S21V7": "Le cadre de l’appel d’offre simplifié est encore en cours de discussion / construction avec les différents acteurs (DGEC/Enedis/EDF…). L’objectif est de limiter la quantité de pièces à fournir par rapport à un appel d’offre classique. L’enjeu des discussions est de converger sur un process qui limite l’impact sur les outils SI des différents acteurs (POTENTIEL, Flux AFF) et qui puisse être mis en œuvre rapidement. "
+    },
+    {
+        "N° ": 8,
+        "Thème": "Créer les contrats",
+        "Sous thème": " Prise d'effet / Durée de contrat / Signature",
+        "Sous sous thème": "Clarification l'arrêté / CDC / Contrat",
+        "Question": "Est-ce qu'un producteur, qui réalise une demande de raccordement à 250kwc au 01/04/25, bénéficiera d'un S21 ou de l'AO simplifié ?",
+        " S21V7": "Il bénéficiera du S21V7. L’AO simplifié est a priori attendu pour l’automne 2025 (vision à date : septembre)."
+    },
+    {
+        "N° ": 9,
+        "Thème": "Créer les contrats",
+        "Sous thème": " Prise d'effet / Durée de contrat / Signature",
+        "Sous sous thème": "Fréquence ou date d'application",
+        "Question": "Quelle volume de contrats sur le segment ]100; 500kWc] est attendu ? ",
+        " S21V7": "Les estimations transmises par le DGEC à ce jour est de 1000 contrats par trimestre sur le segment ]100 ;500 kWc] en S21."
+    },
+    {
+        "N° ": 10,
+        "Thème": "Créer les contrats",
+        "Sous thème": "Contrôle de l'installation",
+        "Sous sous thème": "Dispositifs de mesure / comptage",
+        "Question": "Avec l'interdiction du contrat père fils pour les contrats fils avec P+Q >100kWc, devrons-nous vérifier, qu'avant mise à dispo du contrat d'achat, le producteur possède un PDC spécifique à son installation fils même s'il dispose du même PRM et CARD ?",
+        " S21V7": "Effectivement, l’élément utilisé pour contrôler l’interdiction d’un contrat père-fil pour une installation fils de puissance P+Q sup 100kWc est le PDC. Un contrat fils dont la puissance P+Q est sup 100kWc et un contrat père (peu importe sa puissance) doivent avoir leur PDC.\nAttention deux PDC peuvent-être branchés sur un même PRM et deux installations avec un PDC différent peuvent avoir le même contrat réseau car branchées sur le même PRM.\n"
+    },
+    {
+        "N° ": 11,
+        "Thème": "Créer les contrats",
+        "Sous thème": "Contrôle de l'installation",
+        "Sous sous thème": "Dispositifs de mesure / comptage",
+        "Question": "Si un producteur souhaite augmenter la puissance de son installation au 28/05/2025, de quel dispositif de comptage doit-il s'équiper ?",
+        " S21V7": "A partir du 28/03/25, le producteur souhaitant réaliser une augmentation de puissance avec une installation dont la puissance P+Q est supérieure à 100kWc doit installer un nouveau point de comptage. En effet, l’arrêté stipule un point de comptage par installation dont la puissance P+Q est supérieure à 100kWc"
+    },
+    {
+        "N° ": 12,
+        "Thème": "Créer les contrats",
+        "Sous thème": "Conditions d'éligibilité au contrat",
+        "Sous sous thème": "Documents contractuels",
+        "Question": "Est-ce que la liste des installations prises en compte dans le calcul P+Q doit être jointe au contrat ? ",
+        " S21V7": "Le calcul du P+Q et son contrôle est à réaliser de façon identique à ce qui est fait sur l'ensemble des contrats S21. Toutefois avec le S21V7, la liste des installations prises en compte pour le calcul n'est plus précisée dans les CP. "
+    },
+    {
+        "N° ": 13,
+        "Thème": "Créer les contrats",
+        "Sous thème": "Conditions d'éligibilité au contrat",
+        "Sous sous thème": "Documents contractuels",
+        "Question": "Est-il nécessaire de connaitre le détail des installations prises en compte dans le calcul de la puissance Q ? ",
+        " S21V7": "Oui, ces données sont indispensables. Les actions de collecte et contrôle du P+Q restent identiques. Les CP des contrats S21V7 ne présentent toutefois plus le paragraphe relatif aux installations ayant servies au calcul de la puissance Q."
+    },
+    {
+        "N° ": 14,
+        "Thème": "Créer les contrats",
+        "Sous thème": "Conditions d'éligibilité au contrat",
+        "Sous sous thème": "Documents contractuels",
+        "Question": "Les installations à prendre en compte dans le calcul de la puissance Q pour le S21V7 évoluent-elles ? ",
+        " S21V7": "Le calcul de la puissance Q n’évolue pas avec cet arrêté modificatif S21 V7. Toutes les installations PV rentrent dans le calcul de la puissance Q sauf les installations au sol bénéficiant d’un contrat S25. Cet arrêté n’est pas publié à ce jour."
+    },
+    {
+        "N° ": 15,
+        "Thème": "Créer les contrats",
+        "Sous thème": "Demande de contrat",
+        "Sous sous thème": "Documents contractuels",
+        "Question": "Cas des contrats inf100 - Peut-on refuser un contrat à un producteur si celui-ci ne dépose pas son attestation installateur entre aujourd'hui et septembre, date de déploiement de la non collecte dans le portail SI ? ",
+        " S21V7": "Non nous ne pouvons pas refuser ce contrat. La situation d’un producteur qui refuse de déposer son attestation puisque la réglementation ne l’oblige pas à le faire serait à traiter au cas par cas (exemple : demande au producteur de déposer une attestation sur l’honneur à la place de l’attestation installateur et validation du contrat manuellement – KO SEMOA KADY).\n\nUne évolution SI est en cours afin que pendant la période transitoire, le producteur puisse déposer un document autre que son attestation installateur au niveau de son portail producteur sans bloquer la contractualisation. Le process en cours de développement est le suivant :\n\nL’ART PV a mis à jour de l’attestation producteur afin d’y intégrer la mention selon laquelle le producteur atteste être en possession de son attestation installateur. En signant ce document, le producteur s’engage sur l’honneur à être en possession de son attestation installateur \nLes contrôles de l’attestation installateur ne sont plus demandés au gestionnaire."
+    },
+    {
+        "N° ": 16,
+        "Thème": "Créer les contrats",
+        "Sous thème": "Demande de contrat",
+        "Sous sous thème": "Documents contractuels",
+        "Question": "Cas des contrats inf100 - Lors des audits, pourrait-on être amené à réclamer au producteur les attestations installateurs pour les contrats contrôlés ? ",
+        " S21V7": "Les producteurs doivent pouvoir nous transmettre leur attestation, donc si on juge le besoin de la récolter sur un contrat particulier c’est possible de la réclamer."
+    },
+    {
+        "N° ": 17,
+        "Thème": "Créer les contrats",
+        "Sous thème": "Demande de contrat",
+        "Sous sous thème": "Documents contractuels",
+        "Question": "Cas des contrats inf100 - Peut-on demander la facture d'installation des panneaux comme attestation installateur pendant le délai nécessaire pour la mise en place par le SI ?",
+        " S21V7": "Avec la solution SI en cours de développement, il sera possible de déposer finalement n’importe quel type de document pendant la période transitoire. Cependant, nous préconisons au producteur de déposer tout de même son installation (il est supposé l’avoir). "
+    },
+    {
+        "N° ": 18,
+        "Thème": "Créer les contrats",
+        "Sous thème": "Demande de contrat",
+        "Sous sous thème": "Documents contractuels",
+        "Question": "Cas des contrats inf100 - En cas de perte de l’attestation installateur et de faillite de l'installateur, quel document peut fournir le producteur en remplacement de l'attestation installation ? (facture de panneaux?)",
+        " S21V7": "Si nous demandons au producteur son attestation installateur et que celui-ci est dans l’incapacité de nous la fournir (pour diverse raison), le producteur peut faire passer un bureau de contrôle et nous transmettre une attestation bureau de contrôle en substitution (prévu actuellement sur EDF OA)\nUn producteur attestant être en possession de son attestation installateur alors que ce n’est pas le cas relève d’une fausse déclaration."
+    },
+    {
+        "N° ": 19,
+        "Thème": "Créer les contrats",
+        "Sous thème": "Demande de contrat",
+        "Sous sous thème": "Documents contractuels",
+        "Question": "Cas des contrats inf100 - Un effet rétroactif sur la non-collecte des attestations installateurs des S21 inf 100 KWc est-il envisageable ?",
+        " S21V7": "Le sujet d’une éventuelle rétroactivité des simplifications du S21V7 a été remonté à la DGEC, en attente d’un positionnement de leur part."
+    },
+    {
+        "N° ": 20,
+        "Thème": "Appliquer & Modifier les contrats",
+        "Sous thème": "Modification de puissance",
+        "Sous sous thème": "Modification ou remplacement d’équipement",
+        "Question": "Avec le S21V7, est-ce que les règles applicables pour les augmentations de puissance évoluent ? ",
+        " S21V7": "Les règles sont inchangées, c’est juste la forme du processus de contractualisation par avenant qui change"
+    },
+    {
+        "N° ": 21,
+        "Thème": "Appliquer & Modifier les contrats",
+        "Sous thème": "Modification de l'installation",
+        "Sous sous thème": "Modification ou remplacement d’équipement",
+        "Question": "Lors d'une modification des caractéristiques de l’installation après achèvement, sous quelle forme notifie-t-on le producteur ? ",
+        " S21V7": "L’arrêté laisse ouvert le sujet en n’imposant pas de forme de notification spécifique : on peut penser aux lettres avenantes, à un mail automatique, à une notification sur le portail producteur : ce sujet est en cours d’instruction pour définir la pratique à mettre en œuvre selon le type de modification à instruire. L’idée est de simplifier les gestes à réaliser"
+    },
+    {
+        "N° ": 22,
+        "Thème": "Appliquer & Modifier les contrats",
+        "Sous thème": "Modification de puissance",
+        "Sous sous thème": "Modification ou remplacement d’équipement",
+        "Question": "Avec le S21V7, comment sont traités les modifications associées à une évolution de puissance Q ? ",
+        " S21V7": "Avec le S21V7, des simplifications sont apportées : il n'est plus nécessaire de faire signer des avenants Puissance Q sur le contrat est déjà signé (père). L'envoi d'un notification au producteur est suffisante. "
+    },
+    {
+        "N° ": 23,
+        "Thème": "Appliquer & Modifier les contrats",
+        "Sous thème": "Modification de l'installation",
+        "Sous sous thème": "Documents contractuels",
+        "Question": "Est-ce que les simplicitations apportées par le S21V7 concernant la gestion contractuelle des modifications des caractéristiques des installations après achèvement, sont également applicable pour les DCR avant l'arrêté modificatif (DCR<28/03/2025) ?",
+        " S21V7": "A ce jour (16/05/25), nous sommes dans l'attente des directives de la DGEC. Les simplicitations ne sont pas applicables pour les DCR < 28/03/2025"
+    },
+    {
+        "N° ": 24,
+        "Thème": "Créer les contrats",
+        "Sous thème": "Demande de contrat",
+        "Sous sous thème": "Documents contractuels",
+        "Question": "Concernant la garantie financière sous forme d'une consignation ou de garantie bancaire, quelles vérifications sont attendues par EDF OA ? ",
+        " S21V7": "EDF OA ne va pas vérifier cette garantie financière. Dans le cas d’une consignation, le producteur déposera sa caution auprès de la caisse des dépôts. Il recevra alors un récépissé. Il devra alors au moment de sa DCR fournir ce récépissé directement sur le portail d’ENEDIS. \nLa récolte de ce document par ENEDIS est une condition pour considérer la DCR comme complète. Une fois le projet abouti, le producteur pourra récupérer sa caution de 10 000€ directement auprès de la caisse de dépôt en fournissant son attestation de conformité du bureau de contrôle.\nDans le cas d’une garantie bancaire, il s’agit du même fonctionnement mais avec un établissement financier (au lieu de la caisse des dépôts).\nEDF OA n’intervient donc pas dans le processus de consignation et déconsignation une fois le projet abouti.\nEn revanche EDF OA aura certainement des actions à réaliser dans plusieurs cas :\n\tSi le producteur ne réalise pas son projet au bout de 36 mois, l’état pourra récupérer la caution. Il incombera à EDF de réaliser les gestes afin de récupérer ces fonds. Le processus reste encore à définir et fera l’objet de groupe de travail spécifique.\n\tLors de cas spécifiques lorsque le projet n’a pas abouti (impossibilité de raccordement, …). Ce point fera également l’objet de groupe de travail."
+    },
+    {
+        "N° ": 25,
+        "Thème": "Créer les contrats",
+        "Sous thème": "Demande de contrat",
+        "Sous sous thème": "Éligibilité spécifique",
+        "Question": "Pour les S21V7, avec la suppression des DMT, comment traite-t-on les DMT reçues pour des DCR >= 28/03/2025 ?",
+        " S21V7": "Une PA a été mise en place par le SI pour identifier et piéger des DMT pour les DCR >= 28/03/2025. Ces demandes n'étant plus autorisées, il faut refuser la DMT car elle n’est plus permise à la suite du S21 V7."
+    }
+]
